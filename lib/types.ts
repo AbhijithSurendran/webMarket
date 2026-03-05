@@ -79,6 +79,17 @@ export interface User {
     role: "admin";
 }
 
+export interface Enquiry {
+    id: string;
+    name: string;
+    email: string;
+    phone?: string;
+    location?: string;
+    message: string;
+    is_read: boolean;
+    created_at: string;
+}
+
 export interface DB {
     heroSliders: HeroSlider[];
     products: Product[];
@@ -87,4 +98,5 @@ export interface DB {
     gallery: GalleryImage[];
     pages: PagesContent;
     users: User[];
+    enquiries: Enquiry[];
 }

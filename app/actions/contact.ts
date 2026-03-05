@@ -1,5 +1,7 @@
 "use server"
 
+import { getDB, saveDB, generateId } from "@/lib/db"
+
 export type ContactFormState = {
     success?: boolean
     error?: string
@@ -17,6 +19,8 @@ export async function submitContactForm(
     try {
         const name = formData.get("name") as string
         const email = formData.get("email") as string
+        const phone = formData.get("phone") as string
+        const location = formData.get("location") as string
         const message = formData.get("message") as string
 
         const fieldErrors: ContactFormState["fieldErrors"] = {}
@@ -28,11 +32,26 @@ export async function submitContactForm(
             return { fieldErrors }
         }
 
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        const db = await getDB();
 
-        // In a real application, you would send an email here or save to a database.
-        console.log("New contact form submission:", { name, email, message });
+        // Initialize enquiries array if it doesn't exist yet
+        if (!db.enquiries) {
+            db.enquiries = [];
+        }
+
+        const newEnquiry: import("@/lib/types").Enquiry = {
+            id: generateId(),
+            name,
+            email,
+            phone,
+            location,
+            message,
+            is_read: false,
+            created_at: new Date().toISOString()
+        };
+
+        db.enquiries.push(newEnquiry);
+        await saveDB(db);
 
         return { success: true }
     } catch (error) {

@@ -1,11 +1,14 @@
-import { createClient } from "@/lib/supabase/server"
+import { getDB } from "@/lib/db"
 import { deleteEnquiry, markEnquiryRead } from "@/app/actions/cms"
 import { formatDate } from "@/lib/utils"
 import { Mail, Phone, MapPin, Trash2, CheckCircle } from "lucide-react"
 
 export default async function EnquiriesPage() {
-    let enquiries: import("@/lib/types/database").Enquiry[] = []
-    try { const s = createClient(); const { data } = await s.from("enquiries").select("*").order("created_at", { ascending: false }); enquiries = data || [] } catch { }
+    let enquiries: import("@/lib/types").Enquiry[] = []
+    try {
+        const db = await getDB();
+        enquiries = db.enquiries ? [...db.enquiries].sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()) : [];
+    } catch { }
 
     const unread = enquiries.filter((e) => !e.is_read).length
 

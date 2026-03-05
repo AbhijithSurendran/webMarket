@@ -219,14 +219,23 @@ export async function deleteTestimonial(id: string) {
 }
 
 export async function deleteEnquiry(id: string) {
-    const supabase = createAdminClient()
-    await supabase.from("enquiries").delete().eq("id", id)
+    const db = await getDB()
+    if (db.enquiries) {
+        db.enquiries = db.enquiries.filter(e => e.id !== id)
+        await saveDB(db)
+    }
     revalidatePath("/admin/enquiries")
 }
 
 export async function markEnquiryRead(id: string) {
-    const supabase = createAdminClient()
-    await supabase.from("enquiries").update({ is_read: true }).eq("id", id)
+    const db = await getDB()
+    if (db.enquiries) {
+        const index = db.enquiries.findIndex(e => e.id === id)
+        if (index !== -1) {
+            db.enquiries[index].is_read = true
+            await saveDB(db)
+        }
+    }
     revalidatePath("/admin/enquiries")
 }
 
