@@ -26,7 +26,7 @@ export async function loginAction(prevState: AuthState, formData: FormData): Pro
 
         // For this simple file-based DB, we compare direct strings.
         // In a production system, this should be a bcrypt compare.
-        if (admin.email === email && admin.password === password) {
+        if (admin.email === email && admin.passwordHash === password) {
             // Set a simple session cookie
             const oneDay = 24 * 60 * 60 * 1000
 
