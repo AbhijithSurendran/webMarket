@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import type { HeroSlider } from "@/lib/types/database"
+import type { HeroSlider } from "@/lib/types"
 
 interface HeroSliderProps {
     slides: HeroSlider[]
@@ -52,13 +52,17 @@ export default function HeroSliderSection({ slides }: HeroSliderProps) {
         }
     }, [slides.length])
 
-    const fallbackSlide = {
+    const fallbackSlide: HeroSlider = {
         id: "fallback",
-        image_url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
+        imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80",
         title: "Welcome to WebMarket",
         description: "Your trusted partner for quality products and professional services.",
-        button_text: "Learn More",
-        button_link: "/about",
+        buttonText: "Learn More",
+        buttonLink: "/about",
+        sortOrder: 0,
+        isActive: true,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
     }
 
     const displaySlides = slides.length > 0 ? slides : [fallbackSlide as HeroSlider]
@@ -72,7 +76,7 @@ export default function HeroSliderSection({ slides }: HeroSliderProps) {
                             {/* Background Image */}
                             <div className="absolute inset-0">
                                 <Image
-                                    src={slide.image_url}
+                                    src={slide.imageUrl}
                                     alt={slide.title}
                                     fill
                                     className="object-cover"
@@ -94,17 +98,17 @@ export default function HeroSliderSection({ slides }: HeroSliderProps) {
                                                 {slide.description}
                                             </p>
                                         )}
-                                        {slide.button_text && slide.button_link && (
+                                        {slide.buttonText && slide.buttonLink && (
                                             <div className="flex flex-wrap gap-4">
                                                 <Link
-                                                    href={slide.button_link}
+                                                    href={slide.buttonLink}
                                                     className="btn-primary text-base px-8 py-3.5"
                                                 >
-                                                    {slide.button_text}
+                                                    {slide.buttonText}
                                                 </Link>
                                                 <Link
                                                     href="/contact"
-                                                    className="btn-secondary text-base px-8 py-3.5 border-white text-white hover:bg-white/20"
+                                                    className="btn-secondary text-base px-8 py-3.5 bg-transparent border-white text-white hover:bg-white/20 hover:text-white"
                                                 >
                                                     Contact Us
                                                 </Link>

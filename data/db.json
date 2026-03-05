@@ -11,6 +11,18 @@
       "isActive": true,
       "createdAt": "2026-02-27T09:32:26.775Z",
       "updatedAt": "2026-03-05T09:57:55.045Z"
+    },
+    {
+      "id": "yt5k8f2jpif35w4sep28nw",
+      "imageUrl": "/uploads/GeminiGeneratedImage8ow5g28ow5g28ow5-1772744516429.png",
+      "title": "Abhijith Surendran",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      "buttonText": null,
+      "buttonLink": null,
+      "sortOrder": 0,
+      "isActive": true,
+      "createdAt": "2026-03-05T21:02:19.877Z",
+      "updatedAt": "2026-03-05T21:02:19.877Z"
     }
   ],
   "users": [

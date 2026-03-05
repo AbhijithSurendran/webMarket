@@ -40,21 +40,24 @@ export default function AdminSidebar() {
 
             {/* Nav */}
             <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
-                {navItems.map(({ href, label, icon: Icon, exact }) => (
-                    <Link
-                        key={href}
-                        href={href}
-                        onClick={() => setIsOpen(false)}
-                        className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${isActive(href, exact)
-                            ? "bg-primary-50 text-primary-700"
-                            : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
-                            }`}
-                    >
-                        <Icon size={18} className={isActive(href, exact) ? "text-primary-600" : "text-gray-400"} />
-                        <span className="flex-1">{label}</span>
-                        {isActive(href, exact) && <ChevronRight size={14} className="text-primary-400" />}
-                    </Link>
-                ))}
+                {navItems.map(({ href, label, icon: Icon, exact }) => {
+                    const active = isActive(href, exact)
+                    return (
+                        <Link
+                            key={href}
+                            href={href}
+                            onClick={() => setIsOpen(false)}
+                            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${active
+                                ? "bg-primary-50 text-primary-700"
+                                : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                                }`}
+                        >
+                            <Icon size={18} className={active ? "text-primary-600" : "text-gray-400"} />
+                            <span className="flex-1">{label}</span>
+                            {active && <ChevronRight size={14} className="text-primary-400" />}
+                        </Link>
+                    )
+                })}
             </nav>
 
             {/* Footer */}

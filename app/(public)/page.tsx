@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import HeroSection from "@/components/ui/HeroSection"
+import HeroSliderSection from "@/components/public/HeroSlider"
 import AboutSection from "@/components/public/AboutSection"
 import ServicesSection from "@/components/public/ServicesSection"
 import ProductsSection from "@/components/public/ProductsSection"
@@ -14,17 +15,23 @@ export const metadata: Metadata = {
 export default async function HomePage() {
     const db = await getDB();
     const { home, about } = db.pages;
+    const heroSliders = (db.heroSliders?.filter(s => s.isActive) || []).sort((a, b) => a.sortOrder - b.sortOrder);
     const services = db.services.slice(0, 6);
     const products = db.products.slice(0, 6);
     const galleryItems = db.gallery.slice(0, 6);
 
     return (
         <>
-            <HeroSection
-                title={home.heroTitle}
-                subtitle={home.heroSubtitle}
-                ctaText={home.heroCta}
-            />
+            {heroSliders.length > 0 && (
+                <HeroSliderSection slides={heroSliders} />
+            )}
+            {heroSliders.length === 0 && (
+                <HeroSection
+                    title={home.heroTitle}
+                    subtitle={home.heroSubtitle}
+                    ctaText={home.heroCta}
+                />
+            )}
 
             <AboutSection
                 content={about.content}

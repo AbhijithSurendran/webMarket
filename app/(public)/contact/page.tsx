@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail } from "lucide-react"
 import PageHeader from "@/components/ui/PageHeader"
 import PageContainer from "@/components/ui/PageContainer"
 import ContactForm from "@/components/public/ContactForm"
+import FadeIn from "@/components/ui/FadeIn"
 import { getDB } from "@/lib/db"
 
 export const metadata: Metadata = {
@@ -24,7 +25,7 @@ export default async function ContactPage() {
             <PageContainer className="bg-white">
                 <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto items-start">
                     {/* Contact Information */}
-                    <div>
+                    <FadeIn direction="right">
                         <div className="mb-10">
                             <h2 className="text-3xl font-heading font-bold text-gray-900 mb-4">
                                 Get In Touch
@@ -82,12 +83,12 @@ export default async function ContactPage() {
                         <div className="mt-12 h-64 bg-gray-100 rounded-2xl overflow-hidden relative">
                             <iframe width="100%" height="100%" frameBorder="0" scrolling="no" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=New%20York+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
                         </div>
-                    </div>
+                    </FadeIn>
 
                     {/* Contact Form */}
-                    <div className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 lg:sticky lg:top-32">
+                    <FadeIn direction="left" delay={0.2} className="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 lg:sticky lg:top-32">
                         <ContactForm />
-                    </div>
+                    </FadeIn>
                 </div>
             </PageContainer>
         </>

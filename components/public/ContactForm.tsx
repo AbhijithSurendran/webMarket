@@ -56,7 +56,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                     <label className="label" htmlFor="contact-phone">Phone Number</label>
-                    <input id="contact-phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" className="input-field" />
+                    <input id="contact-phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" className={`input-field ${state.fieldErrors?.phone ? "border-red-400 focus:ring-red-400" : ""}`} />
+                    {state.fieldErrors?.phone && <p className="text-red-500 text-xs mt-1">{state.fieldErrors.phone}</p>}
                 </div>
             </div>
 

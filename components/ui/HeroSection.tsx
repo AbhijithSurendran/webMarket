@@ -52,7 +52,7 @@ export default function HeroSection({
                             </Link>
                             <Link
                                 href="/contact"
-                                className="btn-secondary text-base px-8 py-3.5 border-white text-white hover:bg-white/20"
+                                className="btn-secondary text-base px-8 py-3.5 bg-transparent border-white text-white hover:bg-white/20 hover:text-white"
                             >
                                 Contact Us
                             </Link>

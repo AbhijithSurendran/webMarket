@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
+import FadeIn from "@/components/ui/FadeIn"
 
 interface AboutSectionProps {
     content?: string | null
@@ -15,7 +16,7 @@ export default function AboutSection({ content, bannerImage }: AboutSectionProps
             <div className="container-custom">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Image */}
-                    <div className="relative">
+                    <FadeIn direction="right" className="relative">
                         <div className="relative h-[400px] lg:h-[520px] rounded-2xl overflow-hidden shadow-2xl">
                             <Image
                                 src={image}
@@ -28,10 +29,10 @@ export default function AboutSection({ content, bannerImage }: AboutSectionProps
                         {/* Decorative element */}
                         <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary-100 rounded-2xl -z-10" />
                         <div className="absolute -top-6 -left-6 w-32 h-32 bg-accent/10 rounded-xl -z-10" />
-                    </div>
+                    </FadeIn>
 
                     {/* Content */}
-                    <div>
+                    <FadeIn direction="left" delay={0.2}>
                         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6">
                             <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
                             Who We Are
@@ -60,7 +61,7 @@ export default function AboutSection({ content, bannerImage }: AboutSectionProps
                         {/* <Link href="/about" className="btn-primary">
                             Learn More About Us
                         </Link> */}
-                    </div>
+                    </FadeIn>
                 </div>
             </div>
         </section>

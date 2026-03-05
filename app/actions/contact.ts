@@ -8,6 +8,7 @@ export type ContactFormState = {
     fieldErrors?: {
         name?: string
         email?: string
+        phone?: string
         message?: string
     }
 }
@@ -26,6 +27,11 @@ export async function submitContactForm(
         const fieldErrors: ContactFormState["fieldErrors"] = {}
         if (!name || name.trim().length < 2) fieldErrors.name = "Name is too short."
         if (!email || !/^\S+@\S+\.\S+$/.test(email)) fieldErrors.email = "Invalid email format."
+
+        if (phone && !/^[\d\s+\-()]+$/.test(phone)) {
+            fieldErrors.phone = "Phone number can only contain numbers, spaces, and + - ( ) characters.";
+        }
+
         if (!message || message.trim().length < 10) fieldErrors.message = "Message must be at least 10 characters."
 
         if (Object.keys(fieldErrors).length > 0) {
