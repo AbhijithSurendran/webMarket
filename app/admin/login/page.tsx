@@ -23,11 +23,11 @@ export default function LoginPage() {
     const router = useRouter()
 
     useEffect(() => {
-        if (state.success) {
+        if (state?.success) {
             router.push("/admin")
             router.refresh()
         }
-    }, [state.success, router])
+    }, [state?.success, router])
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-primary-950 to-secondary-900 flex items-center justify-center p-4">

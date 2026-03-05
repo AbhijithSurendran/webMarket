@@ -29,7 +29,7 @@
     {
       "id": "u1",
       "email": "admin@webmarket.com",
-      "password": "password123",
+      "passwordHash": "password123",
       "role": "admin",
       "createdAt": "2026-02-26T00:00:00.000Z"
     }
