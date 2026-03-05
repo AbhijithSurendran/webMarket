@@ -181,5 +181,27 @@
       "phone": "+1 (555) 987-6543",
       "address": "456 Tech Lane, Innovation District, CA 90210"
     }
-  }
+  },
+  "enquiries": [
+    {
+      "id": "fb42r6hy60ny01ivdgw58o",
+      "name": "AbhijithSurendran",
+      "email": "admin@webmarket.com",
+      "phone": "9947748955",
+      "location": "Kottayam",
+      "message": "Hello How Are You",
+      "is_read": false,
+      "created_at": "2026-03-05T14:35:55.269Z"
+    },
+    {
+      "id": "l3fmx8bpmksm7nr49xikw",
+      "name": "Suby",
+      "email": "agag@dgfd.dhs",
+      "phone": "623u6563863",
+      "location": "",
+      "message": "hdjhcghdwvjcvxjwvcxjcvwdx",
+      "is_read": false,
+      "created_at": "2026-03-05T14:39:19.959Z"
+    }
+  ]
 }
